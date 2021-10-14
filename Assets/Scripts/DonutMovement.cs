@@ -6,17 +6,18 @@ public class DonutMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
 
-    private readonly int MIN_SPEED = 2;
-    private readonly int MAX_SPEED = 5;
+    private readonly int MIN_SPEED = 4;
+    private readonly int MAX_SPEED = 6;
     private readonly float MIN_CHANGE_TIME = 1.0f;
-    private readonly float MAX_CHANGE_TIME = 3.0f;
+    private readonly float MAX_CHANGE_TIME = 2.0f;
+    private readonly float BORDER = 0.5f;
+    
+    private Vector2 bounds;
 
     IDictionary<string, bool> outOfBounds;
-    private Vector2 screenBounds;
     private Vector2 movementPerSecond;
     private float lastDirectionChangeTime;
     private float changeTime;
-
 
     // Start is called before the first frame update
     void Start()
@@ -27,9 +28,9 @@ public class DonutMovement : MonoBehaviour
             {"top", false},
             {"bottom", false}
         };
-        screenBounds = Camera.main.ScreenToWorldPoint(new   Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        Debug.Log(screenBounds);
         lastDirectionChangeTime = 0f;
+
+        calcBounds();
         calcChangeTime();
         changeVelocity();
     }
@@ -53,16 +54,16 @@ public class DonutMovement : MonoBehaviour
         // if bounds are out, set float val to 0
         // so you don't go in that direction
         if (outOfBounds["left"]) {
-            xNeg = 0.0f;
+            xNeg = 0.001f;
         }
         else if (outOfBounds["right"]) {
-            xPos = 0.0f;
+            xPos = -0.001f;
         }
         if (outOfBounds["bottom"]) {
-            yNeg = 0.0f;
+            yNeg = 0.001f;
         }
         else if (outOfBounds["top"]) {
-            yPos = 0.0f;
+            yPos = -0.001f;
         }
 
         Vector2 direction = new Vector2(Random.Range(xNeg, xPos), Random.Range(yNeg, yPos)).normalized;
@@ -86,23 +87,37 @@ public class DonutMovement : MonoBehaviour
         outOfBounds["top"] = false;
         outOfBounds["bottom"] = false;
 
-        if (position.x < -screenBounds.x) {
+        if (position.x < -bounds.x) {
             outOfBounds["left"] = true;
             isOut = true;
         }
-        else if (position.x > screenBounds.x) {
+        else if (position.x > bounds.x) {
             outOfBounds["right"] = true;
             isOut = true;
         }
         
-        if (position.y < -screenBounds.y) {
+        if (position.y < -bounds.y) {
             outOfBounds["bottom"] = true;
             isOut = true;
         }
-        else if (position.y > screenBounds.y) {
+        else if (position.y > bounds.y) {
             outOfBounds["top"] = true;
             isOut = true;
         }
         return isOut;
+    }
+
+    void calcBounds() {
+        SpriteRenderer donutSprite = this.gameObject.GetComponent<SpriteRenderer>();
+        Vector2 donutDimensions = new Vector2(
+            donutSprite.bounds.size.x / 2,
+            donutSprite.bounds.size.y / 2
+        );
+        Vector2 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
+
+        bounds = new Vector2(
+            screenBounds.x - donutDimensions.x - BORDER,
+            screenBounds.y - donutDimensions.y - BORDER
+        );
     }
 }
