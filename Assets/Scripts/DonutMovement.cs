@@ -6,8 +6,8 @@ public class DonutMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
 
-    private readonly int MIN_SPEED = 4;
-    private readonly int MAX_SPEED = 6;
+    private readonly int MIN_SPEED = 2;
+    private readonly int MAX_SPEED = 4;
     private readonly float MIN_CHANGE_TIME = 1.0f;
     private readonly float MAX_CHANGE_TIME = 2.0f;
     private readonly float BORDER = 0.5f;
