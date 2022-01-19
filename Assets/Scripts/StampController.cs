@@ -5,14 +5,17 @@ using UnityEngine.InputSystem;
 
 public class StampController : MonoBehaviour
 {
-    [SerializeField] private GameObject hole;
+    [SerializeField] private GameObject donut;
+    [SerializeField] private GameObject holePrefab;
+    [SerializeField] private GameObject game;
     [SerializeField] private Transform start;
     [SerializeField] private Transform end;
-    [SerializeField] private float speed = 5.0f;
+    private float speed;
     private bool keepMoving = true;
     // Start is called before the first frame update
     void Start()
     {
+        speed = GameInfo.getSpeed();
         transform.position = start.transform.position;
     }
 
@@ -29,7 +32,9 @@ public class StampController : MonoBehaviour
     void OnStamp(InputValue input) {
         if (keepMoving) {
             keepMoving = false;
-            Instantiate(hole, new Vector2(transform.position.x, 0), Quaternion.identity);
+            Instantiate(holePrefab, new Vector2(transform.position.x, 0), Quaternion.identity);
+            float distance = Mathf.Abs(transform.position.x - donut.transform.position.x);
+            game.GetComponent<Game>().CalcRank(distance);
         }
     }
 }

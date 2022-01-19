@@ -13,8 +13,8 @@ TagManager:
   - UI
   - Goal
   - Player
+  - Stamp
   - Donut
-  - 
   - 
   - 
   - 
@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
+  - name: Hole
     uniqueID: 3357634893
+    locked: 0
+  - name: Stamp
+    uniqueID: 2239755037
     locked: 0
