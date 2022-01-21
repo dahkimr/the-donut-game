@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Game : MonoBehaviour
 {
     [SerializeField] private Animator animCtlr;
+    // add reference to text and change content depending on rating
     public void CalcRank(float distance) {
         // run text animation
         animCtlr.SetBool("showRating", true);
