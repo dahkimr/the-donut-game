@@ -33,9 +33,10 @@ public class StampController : MonoBehaviour
         if (keepMoving) {
             keepMoving = false;
             Instantiate(holePrefab, new Vector2(transform.position.x, -0.09f), Quaternion.identity);
+            float distance = Mathf.Abs(transform.position.x - donut.transform.position.x);
+
             transform.position = start.transform.position;
 
-            float distance = Mathf.Abs(transform.position.x - donut.transform.position.x);
             game.GetComponent<Game>().CalcRank(distance);
         }
     }

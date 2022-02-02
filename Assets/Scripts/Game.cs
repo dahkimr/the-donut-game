@@ -9,34 +9,36 @@ public class Game : MonoBehaviour
 {
     [SerializeField] private Animator animCtlr;
     [SerializeField] private GameObject ratingText;
-    // add reference to text and change content depending on rating
     public void CalcRank(float distance) {
-        // run text animation
-        string text = "";
-        if (distance > 1) {
-            text = "really?";
-        }
-        else if (distance > 0.5) {
-            text = "nice.";
+        Debug.Log("started");
+        if (distance > 3.0) {
+            GameOver();
         }
         else {
-            text = "amazing!";
+            string text = "";
+            if (distance > 0.8) {
+                text = "really?";
+            }
+            else if (distance > 0.1) {
+                text = "nice.";
+            }
+            else {
+                text = "amazing!";
+            }
+            ratingText.GetComponent<TextMeshProUGUI>().text = text;
+            Debug.Log("animation started");
+            animCtlr.SetBool("showRating", true);
+
+            StartCoroutine(NextScene(distance));
         }
-        Debug.Log(text);
-        ratingText.GetComponent<TextMeshProUGUI>().text = text;
-        animCtlr.SetBool("showRating", true);
-        // if (distance > 1.55) {
-        //     GameOver();
-        // }
-        // else {
-        //     NextScene(distance);
-        // }
     }
+
     private void GameOver() {
         SceneManager.LoadSceneAsync("GameOver");
     }
 
-    private void NextScene(float distance) {
+    IEnumerator NextScene(float distance) {
+        yield return new WaitForSeconds(1f);
         GameInfo.setNextScene(distance);
     }
 }

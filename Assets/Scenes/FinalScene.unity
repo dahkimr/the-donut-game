@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 252326849}
   - component: {fileID: 252326848}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: RatingComment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 270.5573, y: 159.4673}
+  m_AnchoredPosition: {x: -0.000015258789, y: -0.000002861023}
+  m_SizeDelta: {x: 537.3597, y: 170.8901}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &252326848
 MonoBehaviour:
@@ -180,9 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'GAME
-
-    OVER'
+  m_text: They taste average.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b696e9cc0d4ea514abc9218b5a1920c2, type: 2}
   m_sharedMaterial: {fileID: 7899278011879546663, guid: b696e9cc0d4ea514abc9218b5a1920c2, type: 2}
