@@ -19,16 +19,18 @@ public class Game : MonoBehaviour
             if (distance > 0.8) {
                 text = "really?";
             }
-            else if (distance > 0.1) {
+            else if (distance > 0.2) {
                 text = "nice.";
+            }
+            else if (distance > 0.1) {
+                text = "great!";
             }
             else {
                 text = "amazing!";
             }
             ratingText.GetComponent<TextMeshProUGUI>().text = text;
-            Debug.Log("animation started");
             animCtlr.SetBool("showRating", true);
-
+            
             StartCoroutine(NextScene(distance));
         }
     }
@@ -38,7 +40,7 @@ public class Game : MonoBehaviour
     }
 
     IEnumerator NextScene(float distance) {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.55f);
         GameInfo.setNextScene(distance);
     }
 }

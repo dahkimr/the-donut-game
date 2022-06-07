@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public static class GameInfo {
-    private static float[] speeds = new float[] {5.0f, 6.0f, 7.0f, 8.0f, 8.0f, 9.0f};
+    private static float[] speeds = new float[] {8.0f, 12.0f, 18.0f, 21.0f, 23.0f, 26.0f};
     private static int sceneNum = 0;
     private static float currentSpeed = speeds[0];
     private static float[] scores = new float[6];
@@ -18,7 +19,7 @@ public static class GameInfo {
             SceneManager.LoadScene("SpeedUp");
         }
         else {
-            showFinalScene();
+            showTastingScene();
         }
     }
 
@@ -26,9 +27,12 @@ public static class GameInfo {
         return currentSpeed;
     }
 
-    private static void showFinalScene() {
-        // add up the scores
-        // show different text depending
-        SceneManager.LoadScene("FinalScene");
+    public static float getTotalScore() {
+        Debug.Log(scores.Sum());
+        return scores.Sum();
+    }
+
+    private static void showTastingScene() {
+        SceneManager.LoadScene("Tasting");
     }
 }
