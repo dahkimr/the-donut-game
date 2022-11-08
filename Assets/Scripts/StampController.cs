@@ -11,7 +11,8 @@ public class StampController : MonoBehaviour
     [SerializeField] private GameObject game;
     [SerializeField] private Transform start;
     [SerializeField] private Transform end;
-    
+    [SerializeField] private AudioSource audioSource;
+
     private const float downSpeed = 2.0f;
     private const float downDiff = 0.8f;
     private Vector3 downPosition;
@@ -39,6 +40,7 @@ public class StampController : MonoBehaviour
 
     void OnStamp(InputValue input) {
         if (keepMoving) {
+            audioSource.Play();
             keepMoving = false;
 
             downPosition = transform.position - new Vector3(0, downDiff, 0);
