@@ -9,8 +9,6 @@ public class SpeedUpTransition : MonoBehaviour
     [SerializeField] private Canvas canvas;
     [SerializeField] private AudioSource audioSource;
 
-    private const float pitchToIncrease = 0.1f;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +18,12 @@ public class SpeedUpTransition : MonoBehaviour
     IEnumerator NextScene() {
         yield return new WaitForSeconds(0.4f);
         canvas.gameObject.SetActive(true);
-        audioSource.pitch += pitchToIncrease;
-        Debug.Log(audioSource.pitch);
-        audioSource.Play();
-        // i can also start animator here
+        SfxManager.sfxManagerInstance.PlaySpeedUp();
+
         yield return new WaitForSeconds(1.2f);
         canvas.gameObject.SetActive(false);
-        audioSource.Stop();
+        SfxManager.sfxManagerInstance.StopSpeedUp();
+        
         yield return new WaitForSeconds(0.4f);
         SceneManager.LoadScene("Level01");
     }

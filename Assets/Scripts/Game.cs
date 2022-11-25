@@ -9,6 +9,7 @@ public class Game : MonoBehaviour
 {
     [SerializeField] private Animator animCtlr;
     [SerializeField] private GameObject ratingText;
+
     public void CalcRank(float distance) {
         Debug.Log("started");
         if (distance > 3.0) {
