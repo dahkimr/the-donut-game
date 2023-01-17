@@ -32,6 +32,14 @@ public static class GameInfo {
         return scores.Sum();
     }
 
+    public static void restartGame() {
+        sceneNum = 0;
+        currentSpeed = speeds[0];
+        scores = new float[6];
+
+        SceneManager.LoadScene("Level01");
+    }
+
     private static void showTastingScene() {
         SceneManager.LoadScene("Tasting");
     }

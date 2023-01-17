@@ -34,6 +34,6 @@ public class FinalRating : MonoBehaviour
         }
         
         this.gameObject.GetComponent<TextMeshProUGUI>().text = text;
-        Instantiate(donut, new Vector2(0, -1.1f), Quaternion.identity);
+        Instantiate(donut, new Vector2(0, 0.46f), Quaternion.identity);
     }
 }
