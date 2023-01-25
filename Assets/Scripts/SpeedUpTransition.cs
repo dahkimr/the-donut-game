@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class SpeedUpTransition : MonoBehaviour
 {
     [SerializeField] private Canvas canvas;
-    [SerializeField] private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
