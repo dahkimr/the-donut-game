@@ -26,12 +26,12 @@ public class StampController : MonoBehaviour
         transform.position = start.transform.position;
     }
 
-    // Update is called once per frame
     void Update() {
-        if (keepMoving) {
-            transform.position = Vector2.MoveTowards(transform.position, 
-                end.transform.position,
-                speed * Time.deltaTime);
+        if (keepMoving && transform.position.x < end.transform.position.x) {
+            transform.position = new Vector2(transform.position.x + 4 * Time.deltaTime, transform.position.y);
+            // transform.position = Vector2.MoveTowards(transform.position, 
+            //     end.transform.position,
+            //     speed * Time.deltaTime);
         }
         else if (movingDown) {
             MoveHandDown();

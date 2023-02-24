@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public static class GameInfo {
-    private static float[] speeds = new float[] {8.0f, 12.0f, 18.0f, 21.0f, 23.0f, 26.0f};
+    private static float[] speeds = new float[] {4.0f, 8.0f, 12.0f, 16.0f, 17.0f, 18.0f};
     private static int sceneNum = 0;
     private static float currentSpeed = speeds[0];
     private static float[] scores = new float[6];
