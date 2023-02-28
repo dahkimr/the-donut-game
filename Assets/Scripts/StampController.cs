@@ -28,7 +28,8 @@ public class StampController : MonoBehaviour
 
     void Update() {
         if (keepMoving && transform.position.x < end.transform.position.x) {
-            transform.position = new Vector2(transform.position.x + 4 * Time.deltaTime, transform.position.y);
+            transform.position = Vector2.Lerp(transform.position, end.transform.position, speed * Time.deltaTime);
+            // transform.position = new Vector2(transform.position.x + 4 * Time.deltaTime, transform.position.y);
             // transform.position = Vector2.MoveTowards(transform.position, 
             //     end.transform.position,
             //     speed * Time.deltaTime);
