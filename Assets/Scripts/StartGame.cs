@@ -5,19 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        StartCoroutine(PlayIntro());
     }
 
     public void OnClick() {
         SceneManager.LoadScene("Level01");
+    }
+
+    IEnumerator PlayIntro() {
+        yield return new WaitForSeconds(0.5f);
+        
     }
 }

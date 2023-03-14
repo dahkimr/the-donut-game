@@ -8,6 +8,7 @@ public class SfxManager : MonoBehaviour
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip SpeedUpAudioClip;
+    [SerializeField] private AudioClip TheDonutGameClip;
 
     private float startPitch = 0.95f;
     private float pitchToInc = 0.05f;
@@ -23,14 +24,22 @@ public class SfxManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    public void PlaySpeedUp() {
-        audioSource.pitch += pitchToInc;
-        audioSource.clip = SpeedUpAudioClip;
-        audioSource.Play();
-    }
-
-    public void StopSpeedUp() {
+    public void Stop() {
         audioSource.Stop();
     }
 
+    private void Play() {
+        audioSource.Play();
+    }
+
+    public void PlaySpeedUp() {
+        audioSource.pitch += pitchToInc;
+        audioSource.clip = SpeedUpAudioClip;
+        Play();
+    }
+
+    public void PlayTheDonutGame() {
+        audioSource.clip = TheDonutGameClip;
+        Play();
+    }
 }

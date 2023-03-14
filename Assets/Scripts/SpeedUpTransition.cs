@@ -8,7 +8,6 @@ public class SpeedUpTransition : MonoBehaviour
 {
     [SerializeField] private Canvas canvas;
 
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(NextScene());
@@ -21,7 +20,7 @@ public class SpeedUpTransition : MonoBehaviour
 
         yield return new WaitForSeconds(1.2f);
         canvas.gameObject.SetActive(false);
-        SfxManager.sfxManagerInstance.StopSpeedUp();
+        SfxManager.sfxManagerInstance.Stop();
         
         yield return new WaitForSeconds(0.4f);
         SceneManager.LoadScene("Level01");
