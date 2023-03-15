@@ -9,10 +9,11 @@ public class HomeScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlayHomeScreenAudio();
+        StartCoroutine(PlayHomeScreenAudio());
     }
 
-    private void PlayHomeScreenAudio() {
+    IEnumerator PlayHomeScreenAudio() {
+        yield return new WaitForSeconds(0.25f);
         audioSource.Play();
     }
 }
