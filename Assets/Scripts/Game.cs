@@ -30,6 +30,7 @@ public class Game : MonoBehaviour
             }
             ratingText.GetComponent<TextMeshProUGUI>().text = text;
             animCtlr.SetBool("showRating", true);
+            SfxManager.sfxManagerInstance.PlayRating();
             
             StartCoroutine(NextScene(distance));
         }

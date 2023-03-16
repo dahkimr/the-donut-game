@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Intro : MonoBehaviour
 {
-    [SerializeField] private float WAIT_TIME = 3.5f;
+    private float WAIT_TIME = 3.6f;
     void Start()
     {
         StartCoroutine(LoadNext());
