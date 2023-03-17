@@ -8,7 +8,7 @@ public class SfxManager : MonoBehaviour
 
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioSource speedUpAudioSource;
-    [SerializeField] private AudioClip ratingClip;
+    [SerializeField] private AudioClip[] ratingClips = new AudioClip[4];
 
     private float startPitch = 0.95f;
     private float pitchToInc = 0.05f;
@@ -37,8 +37,24 @@ public class SfxManager : MonoBehaviour
         speedUpAudioSource.Play();
     }
 
-    public void PlayRating() {
-        audioSource.clip = ratingClip;
+    public void PlayRating(string text) {
+        switch (text)
+        {
+            case "really?":
+                audioSource.clip = ratingClips[0];
+                break;
+            case "nice.":
+                audioSource.clip = ratingClips[1];
+                break;
+            case "great!":
+                audioSource.clip = ratingClips[2];
+                break;
+            case "amazing!":
+                audioSource.clip = ratingClips[3];
+                break;
+            default:
+                break;
+        }
         Play();
     }
 }

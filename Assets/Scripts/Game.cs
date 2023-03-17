@@ -30,7 +30,7 @@ public class Game : MonoBehaviour
             }
             ratingText.GetComponent<TextMeshProUGUI>().text = text;
             animCtlr.SetBool("showRating", true);
-            SfxManager.sfxManagerInstance.PlayRating();
+            SfxManager.sfxManagerInstance.PlayRating(text);
             
             StartCoroutine(NextScene(distance));
         }
@@ -41,7 +41,7 @@ public class Game : MonoBehaviour
     }
 
     IEnumerator NextScene(float distance) {
-        yield return new WaitForSeconds(1.55f);
+        yield return new WaitForSeconds(2f);
         GameInfo.setNextScene(distance);
     }
 }
